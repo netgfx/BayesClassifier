@@ -49,7 +49,6 @@ class Classifier {
 	}
 
 	func Naivebayes(_ options: Dictionary<String, String>) {
-
 		if options.count == 0 {
 			print("error no options")
 		}
@@ -120,11 +119,9 @@ class Classifier {
 			for (token, _) in _frequencyTable {
 				let frequencyInText: Float = Float(_frequencyTable[token]!)
 				let tokenProbability: Float = self.tokenProbability(token, category: item)
-				print(item, token, frequencyInText, tokenProbability)
 				logProbability = logProbability + (frequencyInText * log(tokenProbability))
 			}
 
-			print("FINAL LOG PROBABILITY: ", logProbability)
 			if logProbability > maxProbability {
 				maxProbability = logProbability
 				chosenCategory = item
@@ -137,7 +134,7 @@ class Classifier {
 	func tokenProbability(_ token: String, category: String) -> Float {
 		var wordFrequencyCount: Int!
 		if let test = self.wordFrequencyCount[category]![token] {
-			print(test)
+		
 		}
 		if self.wordFrequencyCount[category]![token] != nil {
 			wordFrequencyCount = self.wordFrequencyCount[category]![token]!
